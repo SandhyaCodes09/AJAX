@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Practice</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      #data-container {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        display: none;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: rgb(78, 236, 215);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <p id="para">This is my paragraph 1</p>
+    <p id="pa">This is my paragraph 2</p>
+    <p>This is my paragraph 3</p>
+    <p>This is my paragraph 4</p>
+    <input
+      type="button"
+      id="btn"
+      value="click"
+      style="background-color: rgb(173, 245, 255)"/> -->
+
+    <div class="container-fluid" style="background-color: rgb(195, 205, 233)">
+      <div class="h1">Add Records With PHP & Ajax</div>
+      <!-- <div class="btnn"><button id="fetchData">Fetch Data</button></div> -->
+     <form action="">
+
+        <label for="user_name">Name</label><br />
+        <input type="text" id="user_name" name="user_name" /><br />
+
+        <label for="email">Email</label><br />
+        <input type="email" id="email" name="email" /><br /><br />
+
+        <input type="submit" id="save-button" value="Save" />
+
+    </form>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td id="table-data"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    // $(document).ready(function () {
+    //   console.log("we are using jquery");
+    // $('selector').action(); //jquery syntex
+    //   $("p").click(); //click on p
+    //   $('p').click(function () {
+    //     console.log('you clicked on p');
+    //     $(this).hide()  // to use the this function when we click the a single element to hide
+    //   });
+    // $('p').hide(function(){
+    //     console.log('hide paragraph')
+    // });
+
+    //   $("#para").hide(function () {
+    //     console.log("hide paragraph 1");
+    //   });
+
+    //   $("#pa").hide(function () {
+    //     console.log("hide paragraph 2");
+    //   });
+
+    //   $("#btn").click(function () {
+    //     alert("Button clicked!");
+    //   });
+    // }); // do this when click on p
+
+    $(document).ready(function () {
+      function loadTable() {
+        // $.ajax({
+        //   url: "ajax-load.php",
+        //   type: "POST",
+        //   success: function (data) {
+        //     $("#table-data").html(data);
+        //   },
+        // });
+        $.ajax({
+                    url: "ajax-load.php",
+                    type: "POST",
+                    success: function (data) {
+                        $("#table-data").html(data);
+                    }
+                });
+      }
+      loadTable();
+    });
+  </script>
+</html>
