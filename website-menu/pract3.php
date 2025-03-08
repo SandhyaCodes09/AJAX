@@ -66,7 +66,14 @@
       border: none;
     }
 
-
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 4px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -154,7 +161,10 @@
         }
       });
     }
-    loadTable();
+    loadTable(); //Load Table Records
+
+     // save button code start here
+     //Insert new Records
     $('#save-button').on("click", function (e) {
       e.preventDefault();
       var user_name = $("#user_name").val();// create the user_name variable and take the id of name $user_name
@@ -191,7 +201,23 @@
       // In java script and jquery we use the id and class.
 
     });
+       
+    // Delete button code start here
+     $(document).on("click", ".delete-btn",function() {
+         var EmpId = $(this).data("id");
+        //  alert (EmpId);
 
+        $.ajax({
+            url : "ajax-delete.php",
+            type : "POST",
+            data : {id : EmpId},
+            success : function(data){
+              
+            }
+
+        }):
+      
+     });
   });
 </script>
 
