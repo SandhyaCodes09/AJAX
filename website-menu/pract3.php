@@ -163,8 +163,8 @@
     }
     loadTable(); //Load Table Records
 
-     // save button code start here
-     //Insert new Records
+    // save button code start here
+    //Insert new Records
     $('#save-button').on("click", function (e) {
       e.preventDefault();
       var user_name = $("#user_name").val();// create the user_name variable and take the id of name $user_name
@@ -201,23 +201,30 @@
       // In java script and jquery we use the id and class.
 
     });
-       
+
     // Delete button code start here
-     $(document).on("click", ".delete-btn",function() {
-         var EmpId = $(this).data("id");
-        //  alert (EmpId);
+    $(document).on("click", ".delete-btn", function () {
+      var EmpId = $(this).data("id");
+      var element = this;
+      // alert(EmpId);
 
-        $.ajax({
-            url : "ajax-delete.php",
-            type : "POST",
-            data : {id : EmpId},
-            success : function(data){
-              
-            }
+      $.ajax({
+        url: "ajax-delete.php",
+        type: "POST",
+        data: { id: EmpId },
+        success: function (data) {
+          if (data == 1) {
+            $(element).closest("tr").fadeOut();
+            $("#success-message").html("Record Deleted").slideDown();
+          } else {
+            $("#error-message").html("Can't Delete Record").slideDown();
+            $("#success-message").slideUp();
+          }
+        }
 
-        }):
-      
-     });
+      });
+
+    });
   });
 </script>
 
