@@ -5,76 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>jQuery & AJAX Practice</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/styl.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      /* margin-top: 50px; */
-      border: 1px solid black;
-    }
 
-    .container-fluid {
-      padding: 10px;
-      background-color: #ffc0cb;
-    }
-
-    #success-message {
-      background-color: rgb(55, 134, 62);
-      color: white;
-    }
-
-    #error-message {
-      background-color: #df5353;
-      color: white;
-    }
-
-    /* #form-data{
-      background-color: cornsilk;
-      border: 1px solid #ddd; 
-      border: 1px solid black; 
-      padding: 20px;
-    } */
-    #form-data {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      /* Spacing between elements */
-      flex-wrap: wrap;
-      /* Ensures responsiveness */
-    }
-
-    #form-data label {
-      font-weight: bold;
-    }
-
-    #form-data input {
-      padding: 5px 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    #save-button {
-      padding: 5px;
-      font-size: 15px;
-      cursor: pointer;
-      background-color: rgb(34 149 76);
-      color: white;
-      border: none;
-    }
-
-    .delete-btn {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 4px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
 </head>
 
 <body>
@@ -89,6 +24,26 @@
       style="background-color: rgb(173, 245, 255)"/> -->
   <div id="error-message"></div>
   <div id="success-message"></div>
+  <div id="model">
+    <div class="model-form">
+      <h2>Edit Form</h2>
+      <table cellpadding="0" width=" 100%">
+      <tr>
+          <td>User Name</td>
+          <td><input type="user_name" id="user_name"></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" id="email"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" id="edit-submit" value="Save"></td>
+        </tr>
+      </table>
+      <div id="close-btn">x</div>
+    </div>
+  </div>
 
   <div class="container-fluid">
     <div class="h1">Add Records With PHP & Ajax</div>
@@ -225,6 +180,12 @@
       });
 
     });
+    //Edit Button
+
+    $(document).on("click", ".edit-btn", function (){
+        // show model box
+        $("#model").show();
+    })
   });
 </script>
 
